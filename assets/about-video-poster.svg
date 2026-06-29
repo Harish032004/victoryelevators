@@ -1,0 +1,35 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8ed"/>
+      <stop offset=".45" stop-color="#f4d59d"/>
+      <stop offset="1" stop-color="#111318"/>
+    </linearGradient>
+    <linearGradient id="shaft" x1="0" x2="1">
+      <stop offset="0" stop-color="#e8d5aa"/>
+      <stop offset=".36" stop-color="#795628"/>
+      <stop offset=".62" stop-color="#15171d"/>
+      <stop offset="1" stop-color="#030409"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="520" fill="url(#sky)"/>
+  <g opacity=".76" stroke="#8a6230" stroke-width="5" fill="none">
+    <path d="M0 70 620 0M0 138 710 0M0 215 795 0M0 300 895 0M0 395 1030 0"/>
+    <path d="M62 520 486 0M162 520 560 0M265 520 630 0M380 520 706 0"/>
+    <path d="M0 80h705M0 150h806M0 225h940M0 302h1070M0 382h1200"/>
+    <path d="M110 0v520M245 0v520M385 0v520M520 0v520"/>
+  </g>
+  <g transform="translate(660 -40)">
+    <path d="M175 0h210l210 560H230z" fill="url(#shaft)"/>
+    <path d="M245 0h42l170 560h-44z" fill="#e0c180" opacity=".55"/>
+    <path d="M333 0h34l179 560h-34z" fill="#ffe8b7" opacity=".42"/>
+    <path d="M198 94c70-55 153-54 242 0v36c-79-45-159-45-242 0z" fill="#24272e"/>
+    <path d="M202 154c82-38 158-38 236 0v82c-78-24-156-24-236 0z" fill="#d6b16b" opacity=".9"/>
+    <path d="M209 166c76-30 146-30 222 0" stroke="#fff5d7" stroke-width="8" opacity=".55" fill="none"/>
+  </g>
+  <rect width="1200" height="520" fill="#000000" opacity=".08"/>
+  <rect y="0" width="1200" height="115" fill="#ffffff" opacity=".55" filter="url(#soft)"/>
+</svg>

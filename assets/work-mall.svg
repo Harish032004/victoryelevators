@@ -1,0 +1,8 @@
+<svg width="520" height="360" viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" y1="0" y2="1"><stop stop-color="#eef4f6"/><stop offset=".55" stop-color="#9bb4c2"/><stop offset="1" stop-color="#17212b"/></linearGradient></defs>
+  <rect width="520" height="360" fill="url(#g)"/>
+  <rect x="72" y="42" width="376" height="278" fill="#e9eeee" opacity=".78"/>
+  <g stroke="#6a7b83" stroke-width="6"><path d="M72 98h376M72 154h376M72 210h376M72 266h376"/><path d="M150 42v278M230 42v278M310 42v278M390 42v278"/></g>
+  <rect x="140" y="238" width="240" height="82" fill="#151a20" opacity=".74"/>
+  <text x="180" y="288" font-family="Arial, sans-serif" font-size="32" fill="#fff">RETAIL</text>
+</svg>

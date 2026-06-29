@@ -1,0 +1,9 @@
+<svg width="520" height="360" viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" y1="0" y2="1"><stop stop-color="#e6ecec"/><stop offset=".55" stop-color="#757e7f"/><stop offset="1" stop-color="#11151a"/></linearGradient></defs>
+  <rect width="520" height="360" fill="url(#g)"/>
+  <rect x="56" y="30" width="350" height="290" fill="#cfd6d6" opacity=".78"/>
+  <g stroke="#525a5c" stroke-width="5"><path d="M56 88h350M56 146h350M56 204h350M56 262h350"/><path d="M126 30v290M196 30v290M266 30v290M336 30v290"/></g>
+  <path d="M410 0c-54 90-62 206-32 360" stroke="#423522" stroke-width="18"/>
+  <text x="184" y="187" font-family="Arial, sans-serif" font-size="43" fill="#fff">zudio</text>
+  <rect width="520" height="360" fill="#000" opacity=".08"/>
+</svg>
