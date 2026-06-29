@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Elevators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+   
+  
+</head>
+<body>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap');
+
+:root{
+  --header-ink:#17253f;
+  --header-navy:#2d466b;
+  --header-line:#d9dce1;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#fff;
+  font-family:'Inter',Arial,sans-serif;
+}
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  height:88px;
+  border-top:1px solid #202020;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(235,235,234,.96) 0%,
+      rgba(248,248,247,.98) 35%,
+      rgba(237,237,236,.98) 68%,
+      rgba(250,250,249,.98) 100%
+    );
+  box-shadow:0 2px 12px rgba(23,37,63,.04);
+}
+
+.navbar{
+  width:100%;
+  height:100%;
+  padding:0 42px;
+  display:grid;
+  grid-template-columns:minmax(310px,390px) 1fr auto;
+  align-items:center;
+  gap:28px;
+}
+
+/* Brand */
+
+.brand{
+  min-width:0;
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  color:var(--header-ink);
+  text-decoration:none;
+}
+
+.brand-mark{
+  position:relative;
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--header-navy);
+  box-shadow:0 8px 20px rgba(23,37,63,.1);
+}
+
+.brand-mark::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:34px;
+  height:34px;
+  border:1.3px solid rgba(255,255,255,.7);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+
+.brand-mark::after{
+  content:"";
+  position:absolute;
+  top:15px;
+  left:50%;
+  width:0;
+  height:0;
+  border-right:14px solid transparent;
+  border-bottom:26px solid #efd3cc;
+  border-left:14px solid transparent;
+  transform:translateX(-50%);
+}
+
+.brand-initial{
+  position:absolute;
+  top:17px;
+  left:50%;
+  z-index:1;
+  transform:translateX(-50%);
+  color:#263c5e;
+  font:600 24px/1 'Cormorant Garamond',Georgia,serif;
+}
+
+.brand-name{
+  color:var(--header-ink);
+  font:500 clamp(29px,2vw,36px)/1 'Cormorant Garamond',Georgia,serif;
+  white-space:nowrap;
+}
+
+/* Main navigation */
+
+.main-nav{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+}
+
+.nav-item{
+  position:relative;
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+
+.nav-link,
+.dropdown-trigger{
+  position:relative;
+  height:100%;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:0 2px;
+  border:0;
+  background:transparent;
+  color:#111;
+  font:400 18px/1 'Inter',Arial,sans-serif;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:color .25s ease;
+}
+
+.nav-link::after,
+.dropdown-trigger::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:22px;
+  left:0;
+  height:1.5px;
+  background:var(--header-navy);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .25s ease;
+}
+
+.nav-link:hover,
+.dropdown-trigger:hover,
+.nav-link.active{
+  color:var(--header-navy);
+}
+
+.nav-link:hover::after,
+.dropdown-trigger:hover::after,
+.nav-link.active::after{
+  transform:scaleX(1);
+}
+
+.chevron{
+  width:9px;
+  height:9px;
+  margin-top:-4px;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform .2s ease;
+}
+
+.nav-item.open .chevron{
+  margin-top:4px;
+  transform:rotate(225deg);
+}
+
+/* Dropdown */
+
+.dropdown-menu{
+  position:absolute;
+  top:calc(100% - 7px);
+  left:50%;
+  min-width:235px;
+  padding:9px;
+  border:1px solid rgba(23,37,63,.1);
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  box-shadow:0 18px 40px rgba(23,37,63,.14);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translate(-50%,10px);
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:11px 13px;
+  border-radius:8px;
+  color:var(--header-ink);
+  font:400 14px/1.3 'Inter',Arial,sans-serif;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:.2s ease;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible{
+  background:#f0f2f5;
+  color:var(--header-navy);
+  outline:none;
+}
+
+.nav-item:hover .dropdown-menu,
+.nav-item:focus-within .dropdown-menu,
+.nav-item.open .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+}
+
+/* Consultation button */
+
+.header-action{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.consultation{
+  min-width:280px;
+  min-height:68px;
+  padding:0 25px;
+  border:1.2px solid var(--header-ink);
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  background:rgba(255,255,255,.2);
+  color:var(--header-ink);
+  font:600 22px/1 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:.2px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.consultation:hover{
+  background:var(--header-ink);
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+.phone-icon{
+  width:21px;
+  height:21px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* Mobile button */
+
+.menu-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid var(--header-ink);
+  border-radius:50%;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.4);
+  color:var(--header-ink);
+  cursor:pointer;
+}
+
+.menu-lines,
+.menu-lines::before,
+.menu-lines::after{
+  display:block;
+  width:19px;
+  height:1.6px;
+  border-radius:50px;
+  background:currentColor;
+  transition:transform .2s ease,opacity .2s ease;
+}
+
+.menu-lines{position:relative}
+
+.menu-lines::before,
+.menu-lines::after{
+  content:"";
+  position:absolute;
+  left:0;
+}
+
+.menu-lines::before{top:-6px}
+.menu-lines::after{top:6px}
+
+.site-header.menu-open .menu-lines{
+  background:transparent;
+}
+
+.site-header.menu-open .menu-lines::before{
+  transform:translateY(6px) rotate(45deg);
+}
+
+.site-header.menu-open .menu-lines::after{
+  transform:translateY(-6px) rotate(-45deg);
+}
+
+/* Medium desktop */
+
+@media(max-width:1450px){
+  .navbar{
+    padding:0 28px;
+    grid-template-columns:minmax(280px,340px) 1fr auto;
+    gap:18px;
+  }
+
+  .brand-mark{
+    width:54px;
+    height:54px;
+    flex-basis:54px;
+  }
+
+  .brand-name{
+    font-size:31px;
+  }
+
+  .main-nav{
+    gap:23px;
+  }
+
+  .nav-link,
+  .dropdown-trigger{
+    font-size:16px;
+  }
+
+  .consultation{
+    min-width:235px;
+    min-height:60px;
+    padding:0 20px;
+    font-size:19px;
+  }
+}
+
+/* Tablet and mobile */
+
+@media(max-width:1180px){
+  .site-header{
+    height:auto;
+    min-height:76px;
+    max-height:100vh;
+    overflow-y:auto;
+  }
+
+  .navbar{
+    min-height:76px;
+    padding:10px 24px;
+    grid-template-columns:1fr auto;
+    gap:14px;
+  }
+
+  .brand{
+    justify-self:start;
+  }
+
+  .brand-mark{
+    width:50px;
+    height:50px;
+    flex-basis:50px;
+    border-radius:12px;
+  }
+
+  .brand-name{
+    font-size:29px;
+  }
+
+  .menu-toggle{
+    display:inline-flex;
+    justify-self:end;
+  }
+
+  .main-nav{
+    grid-column:1/-1;
+    width:100%;
+    height:auto;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:8px 0 0;
+  }
+
+  .site-header.menu-open .main-nav{
+    display:flex;
+  }
+
+  .nav-item{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .nav-link,
+  .dropdown-trigger{
+    width:100%;
+    height:auto;
+    min-height:48px;
+    justify-content:space-between;
+    padding:14px 4px;
+    border-bottom:1px solid rgba(23,37,63,.11);
+    font-size:16px;
+  }
+
+  .nav-link::after,
+  .dropdown-trigger::after{
+    display:none;
+  }
+
+  .dropdown-menu{
+    position:static;
+    width:100%;
+    min-width:0;
+    display:none;
+    padding:4px 0 8px 13px;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:none;
+    transition:none;
+  }
+
+  .nav-item.open .dropdown-menu{
+    display:block;
+    transform:none;
+  }
+
+  .dropdown-menu a{
+    padding:10px 12px;
+    white-space:normal;
+  }
+
+  .header-action{
+    grid-column:1/-1;
+    width:100%;
+    display:none;
+  }
+
+  .site-header.menu-open .header-action{
+    display:flex;
+  }
+
+  .consultation{
+    width:100%;
+    min-width:0;
+    min-height:52px;
+    margin-top:8px;
+    font-size:18px;
+  }
+}
+
+@media(max-width:520px){
+  .navbar{
+    padding:9px 16px;
+  }
+
+  .brand{
+    gap:9px;
+  }
+
+  .brand-mark{
+    width:45px;
+    height:45px;
+    flex-basis:45px;
+  }
+
+  .brand-mark::before{
+    width:29px;
+    height:29px;
+  }
+
+  .brand-mark::after{
+    top:12px;
+    border-right-width:12px;
+    border-bottom-width:22px;
+    border-left-width:12px;
+  }
+
+  .brand-initial{
+    top:14px;
+    font-size:21px;
+  }
+
+  .brand-name{
+    font-size:24px;
+  }
+
+  .menu-toggle{
+    width:41px;
+    height:41px;
+  }
+}
+</style>
+
+<header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Primary navigation">
+
+    <a class="brand" href="index.html" aria-label="Victory Elevators home">
+      <span class="brand-mark" aria-hidden="true">
+        <span class="brand-initial">V</span>
+      </span>
+      <span class="brand-name">Victory Elevators</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainNav"
+      aria-label="Open menu"
+    >
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
+
+    <div class="main-nav" id="mainNav">
+      <a class="nav-link active" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About us</a>
+
+      <div class="nav-item dropdown">
+        <button class="dropdown-trigger" type="button" aria-expanded="false">
+          Products <span class="chevron" aria-hidden="true"></span>
+        </button>
+
+        <div class="dropdown-menu">
+          <a href="homeelevators.html">Home Elevators</a>
+          <a href="luxuryelevators.html">Luxury Elevators</a>
+          <a href="stylevariantelevators.html">Style Variant Elevators</a>
+          <a href="comfortbudgetvariantelevators.html">Comfort/Budget Variant Elevators</a>
+          <a href="structurecraft.html">Structure Craft</a>
+        </div>
+      </div>
+
+      <div class="nav-item dropdown">
+        <button class="dropdown-trigger" type="button" aria-expanded="false">
+          Services <span class="chevron" aria-hidden="true"></span>
+        </button>
+
+        <div class="dropdown-menu">
+          <a href="modernization.html">Modernization</a>
+          <a href="service.html">Service & Maintenance</a>
+        </div>
+      </div>
+
+      <a class="nav-link" href="careers.html">Careers</a>
+      <a class="nav-link" href="gallery.html">Gallery</a>
+      <a class="nav-link" href="blog.html">Blogs</a>
+    </div>
+
+    <div class="header-action">
+      <a class="consultation" href="tel:+910000000000">
+        <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8.09 9.63a16 16 0 0 0 6.28 6.28l1.19-1.19a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        Book a consultation
+      </a>
+    </div>
+
+  </nav>
+</header>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.getElementById("siteHeader");
+  const menuToggle = header.querySelector(".menu-toggle");
+  const navLinks = header.querySelectorAll(".nav-link");
+  const dropdowns = header.querySelectorAll(".dropdown");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("menu-open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+  });
+
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector(".dropdown-trigger");
+
+    trigger.addEventListener("click", event => {
+      event.stopPropagation();
+
+      const shouldOpen = !dropdown.classList.contains("open");
+
+      dropdowns.forEach(item => {
+        item.classList.remove("open");
+        item
+          .querySelector(".dropdown-trigger")
+          .setAttribute("aria-expanded", "false");
+      });
+
+      if(shouldOpen){
+        dropdown.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if(window.innerWidth <= 1180){
+        header.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+      }
+    });
+  });
+
+  document.addEventListener("click", event => {
+    if(!event.target.closest(".dropdown")){
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove("open");
+        dropdown
+          .querySelector(".dropdown-trigger")
+          .setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if(window.innerWidth > 1180){
+      header.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
+    }
+  });
+});
+</script>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.home-lift-sec{background:#fff;text-align:center;padding:0 7vw 45px;box-sizing:border-box;overflow:hidden}
+.home-lift-title{margin:0 auto 12px;color:#222;font:500 34px/1.12 'Bodoni Moda',Georgia,serif;letter-spacing:-1px;max-width:520px}
+.home-lift-sub{margin:0 auto 45px;max-width:700px;color:#8a8a8a;font:13px/1.4 Georgia,serif}
+
+.lift-slider{position:relative;max-width:960px;margin:0 auto}
+.lift-window{overflow:hidden;border-radius:8px}
+.lift-track{display:flex;gap:8px;transition:transform .45s ease}
+.lift-slide{flex:0 0 calc((100% - 8px)/2);height:430px;border-radius:12px;overflow:hidden;background:#f7f8fa}
+.lift-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+.lift-arrow{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;border:0;border-radius:50%;background:#b9b9b9;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;z-index:3;cursor:pointer}
+.lift-arrow.left{left:-52px}
+.lift-arrow.right{right:-52px}
+
+.lift-dots{display:flex;justify-content:center;gap:5px;margin:10px 0 22px}
+.lift-dots span{width:9px;height:9px;background:#bdbdbd;border-radius:50%;display:block}
+.lift-dots span.active{background:#8f8f8f}
+
+.lift-specs{max-width:960px;margin:0 auto 22px;padding:22px 35px;border:1px solid #f0f0f0;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.04);display:grid;grid-template-columns:repeat(3,1fr);gap:25px;background:#fff}
+.spec h4{margin:0 0 13px;color:#111;font:600 14px Georgia,serif}
+.spec p{margin:0;color:#777;font:12px Georgia,serif}
+.spec i{color:#284b7f;margin-right:7px;font-size:13px}
+
+.lift-btn{display:inline-flex;align-items:center;gap:8px;background:#28415f;color:#fff;text-decoration:none;border-radius:25px;padding:11px 24px;font:700 11px Arial,sans-serif}
+
+@media(max-width:768px){
+.home-lift-sec{padding:20px 6vw 38px}
+.home-lift-title{font-size:30px}
+.home-lift-sub{font-size:12px;margin-bottom:30px}
+.lift-slide{flex:0 0 100%;height:360px}
+.lift-arrow.left{left:10px}
+.lift-arrow.right{right:10px}
+.lift-specs{grid-template-columns:1fr;gap:18px;padding:22px}
+}
+</style>
+
+<section class="home-lift-sec">
+  <h2 class="home-lift-title">Luxury redefined: Elevators 
+<br>for modern elegance</h2>
+
+  <p class="home-lift-sub">
+   Victory Elevators offers luxury elevators with designer cabins and doors, combining functionality and premium aesthetics.These space-saving elevators deliver top-tier vertical transport solutions
+  </p>
+
+  <div class="lift-slider">
+    <button class="lift-arrow left" onclick="moveLift(-1)">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="lift-window">
+      <div class="lift-track" id="liftTrack">
+        <div class="lift-slide"><img src="image27.avif"></div>
+        <div class="lift-slide"><img src="image28.avif"></div>
+        <div class="lift-slide"><img src="image29.avif"></div>
+        <div class="lift-slide"><img src="image30.avif"></div>
+        <div class="lift-slide"><img src="image31.avif"></div>
+       
+      </div>
+    </div>
+
+    <button class="lift-arrow right" onclick="moveLift(1)">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div class="lift-dots" id="liftDots"></div>
+
+  <div class="lift-specs">
+    <div class="spec">
+      <h4>Maximum Height</h4>
+      <p><i class="fa-solid fa-ruler-vertical"></i>Up to 15 meters</p>
+    </div>
+
+    <div class="spec">
+      <h4>Maximum Speed</h4>
+      <p><i class="fa-solid fa-gauge-high"></i>0.4 to 0.7 meters per second.</p>
+    </div>
+
+    <div class="spec">
+      <h4>Maximum Load capacity</h4>
+      <p><i class="fa-solid fa-weight-hanging"></i>204 - 680 kg</p>
+    </div>
+  </div>
+
+  <a href="#" class="lift-btn">
+    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    Get a consultation now
+  </a>
+</section>
+
+<script>
+let liftIndex = 0;
+let perView = 2;
+let originalSlides = [];
+let isMoving = false;
+
+const track = document.getElementById("liftTrack");
+const dotsBox = document.getElementById("liftDots");
+
+originalSlides = Array.from(track.children).map(slide => slide.cloneNode(true));
+
+function setupLiftCarousel(){
+  perView = window.innerWidth <= 768 ? 1 : 2;
+  track.innerHTML = "";
+
+  const firstClones = originalSlides.slice(0, perView).map(s => s.cloneNode(true));
+  const lastClones = originalSlides.slice(-perView).map(s => s.cloneNode(true));
+
+  lastClones.forEach(s => track.appendChild(s));
+  originalSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+  firstClones.forEach(s => track.appendChild(s));
+
+  liftIndex = perView;
+  track.style.transition = "none";
+  updateLiftPosition();
+
+  dotsBox.innerHTML = "";
+  originalSlides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if(i === 0) dot.classList.add("active");
+    dotsBox.appendChild(dot);
+  });
+}
+
+function updateLiftPosition(){
+  const slide = track.querySelector(".lift-slide");
+  const gap = 8;
+  const slideWidth = slide.offsetWidth + gap;
+  track.style.transform = `translateX(-${liftIndex * slideWidth}px)`;
+}
+
+function updateDots(){
+  const dots = dotsBox.querySelectorAll("span");
+  let activeIndex = liftIndex - perView;
+
+  if(activeIndex >= originalSlides.length) activeIndex = 0;
+  if(activeIndex < 0) activeIndex = originalSlides.length - 1;
+
+  dots.forEach(dot => dot.classList.remove("active"));
+  if(dots[activeIndex]) dots[activeIndex].classList.add("active");
+}
+
+function moveLift(direction){
+  if(isMoving) return;
+  isMoving = true;
+
+  liftIndex += direction;
+  track.style.transition = "transform .45s ease";
+  updateLiftPosition();
+  updateDots();
+}
+
+track.addEventListener("transitionend", () => {
+  const total = originalSlides.length;
+
+  if(liftIndex >= total + perView){
+    liftIndex = perView;
+    track.style.transition = "none";
+    updateLiftPosition();
+  }
+
+  if(liftIndex < perView){
+    liftIndex = total + perView - 1;
+    track.style.transition = "none";
+    updateLiftPosition();
+  }
+
+  updateDots();
+  setTimeout(() => isMoving = false, 20);
+});
+
+window.addEventListener("resize", setupLiftCarousel);
+
+setupLiftCarousel();
+</script>
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&display=swap');
+
+.tech-sec{
+  background:#fff;
+  text-align:center;
+  padding:24px 10vw 34px;
+  box-sizing:border-box;
+}
+
+.tech-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 18px;
+  border-radius:30px;
+  background:#f7f8fa;
+  border:1px solid #e4e8ed;
+  color:#284b7f;
+  font:20px Georgia,serif;
+  margin-bottom:28px;
+}
+
+.tech-title{
+  max-width:980px;
+  margin:0 auto 28px;
+  color:#030303;
+  font:500 clamp(38px,4.8vw,56px)/1.18 'Bodoni Moda',Georgia,serif;
+  letter-spacing:-2px;
+}
+
+.tech-desc{
+  max-width:920px;
+  margin:0 auto 30px;
+  color:#8c8c8c;
+  font:26px/1.38 Georgia,serif;
+}
+
+.tech-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 28px;
+  border:1.5px solid #1f344f;
+  border-radius:50px;
+  color:#1f344f;
+  background:#fff;
+  text-decoration:none;
+  font:21px Georgia,serif;
+  transition:.3s ease;
+}
+
+.tech-btn:hover{
+  background:#1f344f;
+  color:#fff;
+}
+
+.tech-btn span{
+  font-size:22px;
+  line-height:1;
+}
+
+@media(max-width:768px){
+  .tech-sec{
+    padding:24px 8vw 34px;
+  }
+
+  .tech-badge{
+    font-size:17px;
+    padding:7px 15px;
+    margin-bottom:24px;
+  }
+
+  .tech-title{
+    font-size:34px;
+    line-height:1.2;
+    letter-spacing:-1.4px;
+    margin-bottom:24px;
+  }
+
+  .tech-title br{
+    display:none;
+  }
+
+  .tech-desc{
+    font-size:20px;
+    line-height:1.35;
+    margin-bottom:26px;
+  }
+
+  .tech-btn{
+    font-size:17px;
+    padding:13px 22px;
+  }
+}
+
+@media(max-width:420px){
+  .tech-sec{
+    padding:22px 7vw 32px;
+  }
+
+  .tech-title{
+    font-size:31px;
+  }
+
+  .tech-desc{
+    font-size:18px;
+  }
+
+  .tech-btn{
+    font-size:16px;
+    padding:12px 20px;
+  }
+}
+</style>
+
+<section class="tech-sec">
+  <div class="tech-badge">✦ Technical specifications</div>
+
+  <h2 class="tech-title">
+    Explore every detail of Victory’s Luxury <br>
+    elevators
+  </h2>
+
+  <p class="tech-desc">
+   Designed to elevate your experience, Victory’s luxury elevators feature machine room-less (MRL) technology and customizable designs to suit high-end spaces like hotels, residences, and commercial buildings.
+  </p>
+
+  <a href="#" class="tech-btn">
+    <span>↗</span>
+    Get a consultation now
+  </a>
+</section>
+
+
+<style>
+.spec-sec{
+  background:#fff;
+  padding:35px 7vw 40px;
+  box-sizing:border-box;
+}
+
+.spec-wrap{
+  max-width:980px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.spec-table{
+  width:100%;
+  font-family:Arial,sans-serif;
+}
+
+.spec-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding:16px 0;
+  border-bottom:1px solid #ddd;
+  font-size:14px;
+}
+
+.spec-label{
+  color:#8a8a8a;
+}
+
+.spec-value{
+  color:#111;
+  text-align:right;
+  font-weight:500;
+}
+
+.flag{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+}
+
+.flag span{
+  width:16px;
+  height:26px;
+  display:block;
+  border-radius:3px;
+}
+
+.flag .green{background:#009246}
+.flag .white{background:#fff;border:1px solid #eee}
+.flag .red{background:#ce2b37}
+
+.location{
+  padding:16px 0;
+  border-bottom:1px solid #ddd;
+}
+
+.location-title{
+  color:#8a8a8a;
+  font:14px Arial,sans-serif;
+  margin-bottom:14px;
+}
+
+.location ul{
+  margin:0;
+  padding-left:18px;
+  color:#111;
+  font:14px/1.6 Arial,sans-serif;
+}
+
+.spec-img{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.spec-img img{
+  width:100%;
+  max-width:310px;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+
+@media(max-width:768px){
+  .spec-sec{
+    padding:30px 7vw;
+  }
+
+  .spec-wrap{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .spec-img{
+    order:-1;
+  }
+
+  .spec-img img{
+    max-width:260px;
+  }
+
+  .spec-row{
+    font-size:13px;
+  }
+
+  .location-title,
+  .location ul{
+    font-size:13px;
+  }
+}
+</style>
+
+<section class="spec-sec">
+  <div class="spec-wrap">
+
+    <div class="spec-table">
+      <div class="spec-row">
+        <div class="spec-label">Type</div>
+        <div class="spec-value">MRL</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-label">Capacity</div>
+        <div class="spec-value">4 to 13 passengers(1088 kg)
+
+</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-label">Speed</div>
+        <div class="spec-value">0.6 to  1.5 meters / second</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-label">Travel height</div>
+        <div class="spec-value">Up to 45 meters</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-label">Pit depth</div>
+        <div class="spec-value">1200 mm</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-label">Overhead clearance</div>
+        <div class="spec-value">3500 mm</div>
+      </div>
+
+      <!-- <div class="spec-row">
+        <div class="spec-label">Made in Italy</div>
+        <div class="spec-value">
+          <div class="flag">
+            <span class="green"></span>
+            <span class="white"></span>
+            <span class="red"></span>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="location">
+        <div class="location-title">Ideal location</div>
+        <ul>
+          <li>Hotels</li>
+          <li>Residences</li>
+          <li>Commercial buildings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="spec-img">
+      <img src="image33.avif" alt="Home elevator technical specification">
+    </div>
+
+  </div>
+</section>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&display=swap');
+
+.motor-sec{
+  background:#fff;
+  text-align:center;
+  padding:42px 7vw 55px;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+
+.motor-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  border-radius:30px;
+  background:#f7f8fa;
+  border:1px solid #e4e8ed;
+  color:#284b7f;
+  font:13px Georgia,serif;
+  margin-bottom:22px;
+}
+
+.motor-title{
+  margin:0 auto 22px;
+  max-width:760px;
+  color:#222;
+  font:500 31px/1.25 'Bodoni Moda',Georgia,serif;
+  letter-spacing:-1.2px;
+}
+
+.motor-desc{
+  margin:0 auto 22px;
+  max-width:700px;
+  color:#9a9a9a;
+  font:600 17px/1.42 Georgia,serif;
+}
+
+.motor-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 22px;
+  border-radius:40px;
+  border:1.5px solid #28415f;
+  color:#28415f;
+  background:#fff;
+  text-decoration:none;
+  font:700 12px Georgia,serif;
+  transition:.3s ease;
+  margin-bottom:42px;
+}
+
+.motor-btn:hover{
+  background:#28415f;
+  color:#fff;
+}
+
+.motor-img{
+  max-width:780px;
+  margin:0 auto;
+}
+
+.motor-img img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .motor-sec{
+    padding:34px 7vw 42px;
+  }
+
+  .motor-badge{
+    font-size:12px;
+    margin-bottom:18px;
+  }
+
+  .motor-title{
+    font-size:27px;
+    line-height:1.25;
+    margin-bottom:18px;
+  }
+
+  .motor-desc{
+    font-size:15px;
+    line-height:1.45;
+    margin-bottom:20px;
+  }
+
+  .motor-btn{
+    font-size:11px;
+    padding:11px 19px;
+    margin-bottom:32px;
+  }
+
+  .motor-img{
+    max-width:100%;
+  }
+}
+
+@media(max-width:420px){
+  .motor-title{
+    font-size:24px;
+  }
+
+  .motor-desc{
+    font-size:14px;
+  }
+}
+</style>
+
+<section class="motor-sec">
+  <div class="motor-badge">✦ Technical Highlights</div>
+
+  <h2 class="motor-title">
+   Gearless technology for unparalleled performance
+  </h2>
+
+  <p class="motor-desc">
+   Our luxury elevators are equipped with advanced gearless traction machines that deliver smooth, quiet, and energy-efficient performance.
+  </p>
+
+  <a href="#" class="motor-btn">
+    <span>↗</span>
+    Get a consultation now
+  </a>
+
+  <div class="motor-img">
+    <img src="image34.avif" alt="Advanced motor technical highlights">
+  </div>
+</section>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.perf-sec{
+  background:#fff;
+  text-align:center;
+  padding:40px 7vw 55px;
+  box-sizing:border-box;
+}
+
+.perf-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  border-radius:30px;
+  background:#f7f8fa;
+  border:1px solid #e4e8ed;
+  color:#284b7f;
+  font:13px Georgia,serif;
+  margin-bottom:20px;
+}
+
+.perf-title{
+  margin:0 auto 20px;
+  max-width:660px;
+  color:#000;
+  font:500 31px/1.25 'Bodoni Moda',Georgia,serif;
+  letter-spacing:-1.2px;
+}
+
+.perf-sub{
+  margin:0 auto 70px;
+  max-width:720px;
+  color:#8b8b8b;
+  font:17px/1.45 Georgia,serif;
+}
+
+.perf-wrap{
+  max-width:1050px;
+  margin:auto;
+}
+
+.perf-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:18px;
+}
+
+.perf-card{
+  border:1px solid #f0f0f0;
+  border-radius:14px;
+  background:#fff;
+  padding:14px 16px 18px;
+  box-shadow:0 3px 13px rgba(0,0,0,.035);
+  box-sizing:border-box;
+}
+
+.perf-visual{
+  height:128px;
+  border-radius:10px;
+  background:#f3f8fc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  margin-bottom:12px;
+}
+
+.perf-card:nth-child(2) .perf-visual{
+  background:#fff3f3;
+}
+
+.main-icon{
+  width:72px;
+  height:72px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #e9edf2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#28415f;
+  font-size:34px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.round-icon{
+  position:absolute;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #e4e8ed;
+  color:#28415f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.round-icon.one{left:50px;top:10px}
+.round-icon.two{right:50px;bottom:8px}
+
+.perf-card h3{
+  margin:0 0 12px;
+  color:#000;
+  font:600 17px/1.1 'Bodoni Moda',Georgia,serif;
+  letter-spacing:-.5px;
+}
+
+.perf-card p{
+  margin:0 auto;
+  color:#8b8b8b;
+  font:14px/1.35 Georgia,serif;
+  max-width:270px;
+}
+
+.perf-bottom{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.perf-mini{
+  border:1px solid #f0f0f0;
+  border-radius:14px;
+  background:#fff;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  text-align:left;
+  box-shadow:0 3px 13px rgba(0,0,0,.035);
+}
+
+.mini-num{
+  width:82px;
+  height:82px;
+  border-radius:8px;
+  background:#28415f;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:600 24px Georgia,serif;
+  flex-shrink:0;
+}
+
+.mini-content h3{
+  margin:0 0 8px;
+  color:#000;
+  font:600 17px/1.1 'Bodoni Moda',Georgia,serif;
+}
+
+.mini-content p{
+  margin:0;
+  color:#8b8b8b;
+  font:14px Georgia,serif;
+}
+
+@media(max-width:900px){
+  .perf-sec{
+    padding:35px 6vw 45px;
+  }
+
+  .perf-sub{
+    margin-bottom:38px;
+  }
+
+  .perf-grid{
+    grid-template-columns:1fr;
+  }
+
+  .perf-bottom{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:480px){
+  .perf-title{
+    font-size:26px;
+  }
+
+  .perf-sub{
+    font-size:15px;
+  }
+
+  .perf-visual{
+    height:115px;
+  }
+
+  .perf-card p,
+  .mini-content p{
+    font-size:13px;
+  }
+
+  .mini-num{
+    width:70px;
+    height:70px;
+    font-size:21px;
+  }
+}
+</style>
+
+<section class="perf-sec">
+  <div class="perf-badge">✦ Performance & Sustainability</div>
+
+  <h2 class="perf-title">
+  Unmatched luxury, tailored to your style
+  </h2>
+
+  <p class="perf-sub">
+   Our MRL elevators are designed to set new standards in reliability, energy efficiency, and passenger comfort.
+  </p>
+
+  <div class="perf-wrap">
+    <div class="perf-grid">
+
+      <div class="perf-card">
+        <div class="perf-visual">
+          <div class="round-icon one"><i class="fa-solid fa-person-running"></i></div>
+          <div class="main-icon"><i class="fa-solid fa-elevator"></i></div>
+          <div class="round-icon two"><i class="fa-solid fa-hand-holding-medical"></i></div>
+        </div>
+        <h3>Automatic rescue operation</h3>
+        <p>
+          Our battery-powered system ensures passenger safety by automatically moving the elevator to the nearest floor during a power failure, providing peace of mind and reliability
+        </p>
+      </div>
+
+      <div class="perf-card">
+        <div class="perf-visual">
+          <div class="main-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+        </div>
+        <h3>Advanced Safety Systems</h3>
+        <p>
+          Hydrocore's infrared sensors reopen doors instantly when blocked. A secure locking system keeps doors closed if the elevator stops between floors, ensuring passenger safety.
+        </p>
+      </div>
+
+      <div class="perf-card">
+        <div class="perf-visual">
+          <div class="round-icon one"><i class="fa-solid fa-wheelchair"></i></div>
+          <div class="main-icon"><i class="fa-solid fa-elevator"></i></div>
+          <div class="round-icon two"><i class="fa-solid fa-child-reaching"></i></div>
+        </div>
+        <h3>Comfort Redefined</h3>
+        <p>
+          Victory Elevators’ Direct Landing Technology ensures smooth, precise stops for easy and safe entry, especially for children, seniors, and those with mobility needs.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="perf-bottom">
+      <div class="perf-mini">
+        <div class="mini-num">10X</div>
+        <div class="mini-content">
+          <h3>Efficient LED Lighting</h3>
+          <p>Reduces energy consumption</p>
+        </div>
+      </div>
+
+      <div class="perf-mini">
+        <div class="mini-num">75 %</div>
+        <div class="mini-content">
+          <h3>Sleep mode</h3>
+          <p>Auto shutdown ,help to save more energy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+   <section class="trusted-section" aria-labelledby="trustedTitle">
+        <div class="trusted-kicker">
+            <svg class="trusted-kicker-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.3 2.6l1.4 3.6 3.6 1.4-3.6 1.4-1.4 3.6-1.4-3.6-3.6-1.4 3.6-1.4 1.4-3.6zM6.7 8.7l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6z"/>
+            </svg>
+            Trusted solutions for vertical spaces
+        </div>
+
+        <h2 class="trusted-title" id="trustedTitle">Proven expertise in providing top-rated luxury<br>elevators</h2>
+
+        <div class="trusted-logos" aria-label="Trusted client logos">
+            <div class="trusted-track trusted-left">
+                <div class="trusted-marquee">
+                    <span>3L</span>
+                    <span>St Joseph Hospitals</span>
+                    <span>Girishwari Hospital</span>
+                    <span>Kaleeswari</span>
+                    <span>Light of Care</span>
+                    <span>India Builders</span>
+                    <span>MRF</span>
+                    <span>3L</span>
+                    <span>St Joseph Hospitals</span>
+                    <span>Girishwari Hospital</span>
+                    <span>Kaleeswari</span>
+                    <span>Light of Care</span>
+                    <span>India Builders</span>
+                    <span>MRF</span>
+                </div>
+            </div>
+
+            <div class="trusted-center" aria-hidden="true">
+                <span class="trusted-logo-mark">
+                    <span>V</span>
+                </span>
+            </div>
+
+            <div class="trusted-track trusted-right">
+                <div class="trusted-marquee">
+                    <span>Girishwari Hospital</span>
+                    <span>St Joseph Hospitals</span>
+                    <span>India Builders</span>
+                    <span>MRF</span>
+                    <span>Premium</span>
+                    <span>Light of Care</span>
+                    <span>Kaleeswari</span>
+                    <span>Girishwari Hospital</span>
+                    <span>St Joseph Hospitals</span>
+                    <span>India Builders</span>
+                    <span>MRF</span>
+                    <span>Premium</span>
+                    <span>Light of Care</span>
+                    <span>Kaleeswari</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .trusted-section {
+            padding: 34px 0 58px;
+            background: #ffffff;
+            color: #000000;
+            text-align: center;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            overflow: hidden;
+        }
+
+        .trusted-kicker {
+            min-height: 30px;
+            padding: 0 13px;
+            border: 1px solid #e6e6e6;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #f8f8f8;
+            color: #2f4c78;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .trusted-kicker-icon {
+            width: 15px;
+            height: 15px;
+            fill: #2f4c78;
+        }
+
+        .trusted-title {
+            margin: 24px 0 0;
+            color: #000000;
+            font-size: clamp(30px, 3.1vw, 42px);
+            font-weight: 600;
+            line-height: 1.18;
+        }
+
+        .trusted-logos {
+            position: relative;
+            width: min(950px, 100%);
+            height: 112px;
+            margin: 74px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 132px 1fr;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .trusted-track {
+            position: relative;
+            top: auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: rgba(23, 37, 63, 0.28);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+            text-transform: none;
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, #000 18%, #000 88%, transparent);
+        }
+
+        .trusted-left {
+            grid-column: 1;
+            justify-content: flex-start;
+        }
+
+        .trusted-right {
+            grid-column: 3;
+            justify-content: flex-start;
+        }
+
+        .trusted-marquee {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            width: max-content;
+            will-change: transform;
+        }
+
+        .trusted-left .trusted-marquee {
+            animation: trusted-left-scroll 9s linear infinite;
+        }
+
+        .trusted-right .trusted-marquee {
+            animation: trusted-right-scroll 9s linear infinite;
+        }
+
+        .trusted-marquee span {
+            flex: 0 0 auto;
+            filter: grayscale(1);
+            opacity: 0.75;
+        }
+
+        .trusted-center {
+            position: relative;
+            z-index: 2;
+            grid-column: 2;
+            justify-self: center;
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 16px 34px rgba(23, 37, 63, 0.08);
+        }
+
+        .trusted-logo-mark {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #2f4c78;
+        }
+
+        .trusted-logo-mark::before {
+            content: "";
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border: 1.3px solid rgba(255, 255, 255, 0.72);
+            border-radius: 50%;
+        }
+
+        .trusted-logo-mark::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-bottom: 28px solid #f1d5ce;
+        }
+
+        .trusted-logo-mark span {
+            position: relative;
+            z-index: 1;
+            color: #263c5e;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        @keyframes trusted-left-scroll {
+            from {
+                transform: translateX(-50%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes trusted-right-scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 680px) {
+            .trusted-section {
+                padding: 26px 0 42px;
+            }
+
+            .trusted-title {
+                font-size: 30px;
+            }
+
+            .trusted-title br {
+                display: none;
+            }
+
+            .trusted-logos {
+                height: 94px;
+                margin-top: 48px;
+                grid-template-columns: 1fr 104px 1fr;
+            }
+
+            .trusted-track {
+                font-size: 12px;
+            }
+
+            .trusted-marquee {
+                gap: 22px;
+            }
+
+            .trusted-center {
+                width: 88px;
+                height: 88px;
+            }
+
+            .trusted-logo-mark {
+                width: 58px;
+                height: 58px;
+            }
+        }
+    </style>
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+.victory-footer,
+.victory-footer *{
+  box-sizing:border-box;
+}
+
+.victory-footer{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#061014;
+  color:#fff;
+}
+
+/* Moving heading */
+
+.footer-marquee{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  padding:40px 0 30px;
+}
+
+.footer-marquee::before,
+.footer-marquee::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  z-index:2;
+  width:13%;
+  pointer-events:none;
+}
+
+.footer-marquee::before{
+  left:0;
+  background:linear-gradient(90deg,#061014,transparent);
+}
+
+.footer-marquee::after{
+  right:0;
+  background:linear-gradient(-90deg,#061014,transparent);
+}
+
+.footer-marquee-track{
+  display:flex;
+  align-items:center;
+  width:max-content;
+  animation:footerMarquee 24s linear infinite;
+  will-change:transform;
+}
+
+.footer-marquee-text{
+  flex:none;
+  padding-right:55px;
+  color:#fff;
+  font:500 clamp(62px,7.2vw,112px)/1 'Bodoni Moda',Georgia,serif;
+  letter-spacing:-4px;
+  white-space:nowrap;
+}
+
+@keyframes footerMarquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* Main footer */
+
+.footer-inner{
+  width:min(1680px,100%);
+  margin:auto;
+  padding:70px 5vw 42px;
+}
+
+.footer-main{
+  display:grid;
+  grid-template-columns:minmax(390px,1.7fr) repeat(4,minmax(150px,.55fr));
+  gap:70px;
+  align-items:start;
+}
+
+.footer-about{
+  max-width:710px;
+}
+
+.footer-about h2{
+  margin:0 0 28px;
+  color:#fff;
+  font:500 clamp(32px,3vw,43px)/1.14 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:-1px;
+}
+
+.footer-about p{
+  max-width:700px;
+  margin:0;
+  color:#fff;
+  font:600 21px/1.35 'Cormorant Garamond',Georgia,serif;
+}
+
+.footer-column h3,
+.footer-contact-item h3{
+  margin:0 0 22px;
+  color:#b9b7b5;
+  font:600 14px/1 'Cormorant Garamond',Georgia,serif;
+  text-transform:uppercase;
+}
+
+.footer-links{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.footer-links li{
+  border-bottom:1px solid rgba(255,255,255,.85);
+}
+
+.footer-links a{
+  min-height:49px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:#fff;
+  font:400 16px/1.2 'Inter',Arial,sans-serif;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.footer-links a:hover{
+  padding-left:5px;
+  color:#b9c9df;
+}
+
+.footer-social-icon{
+  width:18px;
+  display:inline-flex;
+  justify-content:center;
+  color:#d9d9d9;
+  font-size:17px;
+}
+
+/* Contact information */
+
+.footer-contact-grid{
+  margin-top:100px;
+  display:grid;
+  grid-template-columns:1.15fr 1.15fr 1.15fr 1fr;
+  gap:70px;
+  align-items:start;
+}
+
+.footer-contact-item p,
+.footer-contact-item address{
+  margin:0;
+  color:#fff;
+  font:600 16px/1.22 'Cormorant Garamond',Georgia,serif;
+  font-style:normal;
+}
+
+.footer-contact-item a{
+  color:#fff;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+
+.footer-contact-item a:hover{
+  color:#b9c9df;
+}
+
+/* Tablet */
+
+@media(max-width:1250px){
+  .footer-inner{
+    padding:55px 5vw 38px;
+  }
+
+  .footer-main{
+    grid-template-columns:1.5fr repeat(2,1fr);
+    gap:45px;
+  }
+
+  .footer-about{
+    grid-row:span 2;
+  }
+
+  .footer-contact-grid{
+    margin-top:70px;
+    grid-template-columns:repeat(2,1fr);
+    gap:38px 55px;
+  }
+
+  .footer-marquee-text{
+    letter-spacing:-3px;
+  }
+}
+
+/* Mobile */
+
+@media(max-width:720px){
+  .footer-marquee{
+    padding:28px 0 20px;
+  }
+
+  .footer-marquee-text{
+    padding-right:35px;
+    font-size:55px;
+    letter-spacing:-2px;
+  }
+
+  .footer-inner{
+    padding:42px 6vw 32px;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr 1fr;
+    gap:38px 24px;
+  }
+
+  .footer-about{
+    grid-column:1/-1;
+    grid-row:auto;
+  }
+
+  .footer-about h2{
+    margin-bottom:18px;
+    font-size:32px;
+  }
+
+  .footer-about p{
+    font-size:18px;
+  }
+
+  .footer-column h3{
+    margin-bottom:13px;
+  }
+
+  .footer-links a{
+    min-height:44px;
+    font-size:14px;
+  }
+
+  .footer-contact-grid{
+    margin-top:50px;
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .footer-contact-item h3{
+    margin-bottom:12px;
+  }
+
+  .footer-contact-item p,
+  .footer-contact-item address{
+    font-size:15px;
+  }
+}
+
+@media(max-width:430px){
+  .footer-main{
+    grid-template-columns:1fr;
+  }
+
+  .footer-about,
+  .footer-column{
+    grid-column:auto;
+  }
+
+  .footer-marquee-text{
+    font-size:46px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .footer-marquee-track{
+    animation:none;
+  }
+}
+/* ---------- Footer 100% zoom and white-space fix ---------- */
+
+html,
+body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+}
+
+/* Prevent white background from appearing below the footer */
+body{
+  background:#061014;
+}
+
+/* Keep footer content height natural */
+.victory-footer{
+  display:block;
+  width:100%;
+  height:auto;
+  min-height:0;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+  overflow-y:visible;
+  background:#061014;
+}
+
+/* Compact marquee */
+.footer-marquee{
+  padding:25px 0 17px;
+}
+
+.footer-marquee-text{
+  padding-right:48px;
+  font-size:clamp(58px,6vw,94px);
+  line-height:.98;
+  letter-spacing:-3px;
+}
+
+/* Compact main footer spacing */
+.footer-inner{
+  width:min(1680px,100%);
+  margin:0 auto;
+  padding:42px 4vw 24px;
+}
+
+.footer-main{
+  grid-template-columns:minmax(350px,1.6fr) repeat(4,minmax(130px,.55fr));
+  gap:42px;
+}
+
+.footer-about{
+  max-width:650px;
+}
+
+.footer-about h2{
+  margin:0 0 20px;
+  font-size:clamp(29px,2.5vw,38px);
+  line-height:1.12;
+}
+
+.footer-about p{
+  max-width:650px;
+  font-size:18px;
+  line-height:1.3;
+}
+
+.footer-column h3,
+.footer-contact-item h3{
+  margin:0 0 15px;
+  font-size:13px;
+}
+
+.footer-links a{
+  min-height:40px;
+  font-size:14px;
+}
+
+/* Reduce the large gap before contact information */
+.footer-contact-grid{
+  margin-top:52px;
+  padding-bottom:0;
+  grid-template-columns:1.15fr 1.15fr 1.15fr 1fr;
+  gap:42px;
+}
+
+.footer-contact-item p,
+.footer-contact-item address{
+  font-size:14px;
+  line-height:1.25;
+}
+
+/* Remove any final element spacing */
+.victory-footer p:last-child,
+.victory-footer address:last-child,
+.victory-footer ul:last-child{
+  margin-bottom:0;
+}
+
+.victory-footer:last-child{
+  margin-bottom:0;
+}
+
+/* Compact layout for shorter desktop screens */
+@media(min-width:1251px) and (max-height:850px){
+  .footer-marquee{
+    padding:18px 0 12px;
+  }
+
+  .footer-marquee-text{
+    font-size:clamp(52px,5.5vw,82px);
+  }
+
+  .footer-inner{
+    padding-top:32px;
+    padding-bottom:18px;
+  }
+
+  .footer-main{
+    gap:35px;
+  }
+
+  .footer-about h2{
+    margin-bottom:15px;
+  }
+
+  .footer-contact-grid{
+    margin-top:38px;
+    gap:35px;
+  }
+
+  .footer-links a{
+    min-height:36px;
+  }
+}
+
+/* Tablet */
+@media(max-width:1250px){
+  .footer-inner{
+    padding:38px 5vw 24px;
+  }
+
+  .footer-main{
+    grid-template-columns:1.5fr repeat(2,1fr);
+    gap:34px;
+  }
+
+  .footer-contact-grid{
+    margin-top:45px;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px 45px;
+  }
+}
+
+/* Mobile */
+@media(max-width:720px){
+  .footer-marquee{
+    padding:22px 0 15px;
+  }
+
+  .footer-marquee-text{
+    padding-right:30px;
+    font-size:48px;
+    letter-spacing:-2px;
+  }
+
+  .footer-inner{
+    padding:34px 6vw 22px;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr 1fr;
+    gap:30px 20px;
+  }
+
+  .footer-about{
+    grid-column:1 / -1;
+  }
+
+  .footer-about h2{
+    font-size:28px;
+  }
+
+  .footer-about p{
+    font-size:17px;
+  }
+
+  .footer-contact-grid{
+    margin-top:38px;
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+}
+
+@media(max-width:430px){
+  .footer-main{
+    grid-template-columns:1fr;
+  }
+
+  .footer-about{
+    grid-column:auto;
+  }
+
+  .footer-marquee-text{
+    font-size:42px;
+  }
+}
+</style>
+
+<footer class="victory-footer">
+
+  <div class="footer-marquee" aria-hidden="true">
+    <div class="footer-marquee-track">
+      <div class="footer-marquee-text">
+        Elevate. Rise. Move. Innovate. Elevate. Rise. Move. Innovate.
+      </div>
+
+      <div class="footer-marquee-text">
+        Elevate. Rise. Move. Innovate. Elevate. Rise. Move. Innovate.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+
+      <div class="footer-about">
+        <h2>
+          Victory Elevators – Where luxury meets<br>
+          affordability.
+        </h2>
+
+        <p>
+          Expertly crafted elevators designed to elevate your lifestyle and
+          redefine vertical transportation. Contact us today.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="blog.html">Blogs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+
+        <ul class="footer-links">
+          <li>
+            <a href="#" target="_blank" rel="noopener">
+              <span class="footer-social-icon">
+                <i class="fa-brands fa-instagram"></i>
+              </span>
+              Instagram
+            </a>
+          </li>
+
+          <li>
+            <a href="#" target="_blank" rel="noopener">
+              <span class="footer-social-icon">
+                <i class="fa-brands fa-facebook-f"></i>
+              </span>
+              Facebook
+            </a>
+          </li>
+
+          <li>
+            <a href="#" target="_blank" rel="noopener">
+              <span class="footer-social-icon">
+                <i class="fa-brands fa-linkedin"></i>
+              </span>
+              Linkedin
+            </a>
+          </li>
+
+          <li>
+            <a href="#" target="_blank" rel="noopener">
+              <span class="footer-social-icon">
+                <i class="fa-brands fa-youtube"></i>
+              </span>
+              Youtube
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Downloads</h3>
+
+        <ul class="footer-links">
+          <li>
+            <a href="assets/victory-elevators-brochure.pdf" download>
+              E-Brochure
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Earn With Us</h3>
+
+        <ul class="footer-links">
+          <li><a href="#">Referral program</a></li>
+          <li><a href="#">Affiliate program</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-contact-grid">
+
+      <div class="footer-contact-item">
+        <h3>Head Office</h3>
+        <address>
+          4/37, 4th Street, Vijayaragavapuram,<br>
+          8 ft Road, Saligramam<br>
+          Chennai - 600 093.
+        </address>
+      </div>
+
+      <div class="footer-contact-item">
+        <h3>Factory</h3>
+        <address>
+          No 7 &amp; 8, Harish Nagar,<br>
+          Thirumudivakkam,<br>
+          Chennai - 600 044.
+        </address>
+      </div>
+
+      <div class="footer-contact-item">
+        <h3>For Sales</h3>
+        <p>
+          Phone no -
+          <a href="tel:+919677122952">9677122952</a>,
+          <a href="tel:+919677122088">9677122088</a>
+        </p>
+
+        <p>
+          Email -
+          <a href="mailto:sales@victoryelevators.com">
+            Sales@victoryelevators.com
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-contact-item">
+        <h3>For Service</h3>
+        <p>
+          Phone no -
+          <a href="tel:+914423650211">044 - 23650211</a>
+        </p>
+
+        <p>
+          Email -
+          <a href="mailto:service@victoryelevators.com">
+            Service@victoryelevators.com
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+   <style>
+  body {
+    padding-top: 88px !important;
+  }
+
+  .site-header,
+  #siteHeader {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
+  }
+
+  @media (max-width: 1180px) {
+    body {
+      padding-top: 76px !important;
+    }
+
+    .site-header,
+    #siteHeader {
+      max-height: 100vh !important;
+      overflow-y: auto !important;
+    }
+  }
+</style>
+   <style>
+        .floating-actions {
+            position: fixed;
+            right: 16px;
+            bottom: 22px;
+            z-index: 9999;
+            display: grid;
+            gap: 7px;
+        }
+
+        .floating-action {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: #ffffff;
+            color: #2f4c78;
+            text-decoration: none;
+            box-shadow: 0 10px 22px rgba(23, 37, 63, 0.08);
+            transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, color 220ms ease;
+            animation: floating-breathe 3.2s ease-in-out infinite;
+        }
+
+        .floating-action:hover,
+        .floating-action:focus-visible {
+            background: #2f4c78;
+            color: #ffffff;
+            transform: translateY(-5px) scale(1.06);
+            box-shadow: 0 16px 30px rgba(23, 37, 63, 0.22);
+            outline: none;
+            animation-play-state: paused;
+        }
+
+        .floating-action svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            transition: transform 240ms ease;
+        }
+
+        .floating-action:hover svg,
+        .floating-action:focus-visible svg {
+            transform: rotate(-8deg) scale(1.12);
+        }
+
+        .floating-action svg.stroke-icon {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes floating-breathe {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-2px);
+            }
+        }
+
+        @media (max-width: 680px) {
+            .floating-actions {
+                right: 10px;
+                bottom: 16px;
+                gap: 6px;
+            }
+
+            .floating-action {
+                width: 50px;
+                height: 50px;
+                border-radius: 13px;
+            }
+
+            .floating-action svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+
+    <div class="floating-actions" aria-label="Quick contact actions">
+        <a class="floating-action" href="contact.html" aria-label="Open enquiry form">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 3h16a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 20 21H4a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 4 3zm1.7 3.6v3h7.1v-3H5.7zm10.1.35 1.15 2.3 2.55.37-1.85 1.8.44 2.54-2.29-1.2-2.28 1.2.43-2.54-1.84-1.8 2.54-.37 1.15-2.3zM5.7 13.2v2h4.8v-2H5.7zm0 3.4v2h7.9v-2H5.7z"/>
+            </svg>
+        </a>
+
+        <a class="floating-action" href="https://wa.me/919677122952" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2.25A9.65 9.65 0 0 0 3.7 16.76L2.5 21.15l4.5-1.18a9.64 9.64 0 1 0 5.04-17.72zm0 17.55a7.86 7.86 0 0 1-4.01-1.1l-.29-.17-2.67.7.71-2.6-.19-.3a7.82 7.82 0 1 1 6.45 3.47zm4.31-5.86c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.02-.37.1-.49.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/>
+            </svg>
+        </a>
+
+        <a class="floating-action" href="tel:+919677122952" aria-label="Call Victory Elevators">
+            <svg class="stroke-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v2.35a2 2 0 0 1-2.18 2 19.68 19.68 0 0 1-8.58-3.05 19.18 19.18 0 0 1-5.92-5.92A19.68 19.68 0 0 1 2.27 3.7 2 2 0 0 1 4.26 1.5h2.35a2 2 0 0 1 2 1.72c.13.95.35 1.88.67 2.76a2 2 0 0 1-.45 2.1L7.84 9.07a15.6 15.6 0 0 0 7.09 7.09l.99-.99a2 2 0 0 1 2.1-.45c.88.32 1.81.54 2.76.67A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </a>
+    </div>
+
+
+</body></html>
